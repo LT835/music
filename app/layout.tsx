@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Header from "../app/components/header";
+import LeftNav from "../app/components/left-nav";
+import clsx from "clsx";
+import Player from "./components/player";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,9 +18,20 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // const show = isMoblie();
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={clsx(`${ inter.className }` ,{})}>
+        <Header />
+        <div className="w-full">
+          {
+            // show ? <LeftNav/> :<></>
+          }
+          <LeftNav/>
+          {children}
+          <Player/>
+        </div>
+      </body>
     </html>
   );
 }
